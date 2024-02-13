@@ -27,7 +27,9 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+   .hero-section {
+    background: url("/hero-image.jpg");
+    background-size: cover;
+    background-position: 68% 10%;
   }
 }
