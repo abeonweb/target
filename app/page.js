@@ -3,7 +3,7 @@ import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col justify-between text-gray-700">
       <div className="hero-section relative h-auto flex flex-col md:flex-row-reverse justify-around py-20">
         <div className="absolute top-0 left-0 bottom-0 right-0 bg-black/40 z-10" />
         <div className="z-20 items-center justify-between text-sm px-2 pt-10 pb-20 text-white md:flex md:flex-col md:justify-end">
