@@ -1,25 +1,16 @@
-"use client";
-import { useState, useContext } from "react";
+// import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/react/20/solid";
-// import { UserContext } from "./UserProvider";
+import AuthButton from "./AuthButton";
 
-const Navbar = ({ handleNavClose }) => {
-  const { user, setUser } = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState(user);
-  
-  const handleMenuClick = () => {
-    setIsOpen((prev) => !prev);
-  };
+const Navbar = () => {
+  const isOpen = false;
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const handleSignOutUser = async ()=>{
-    console.log("trigger sign out", user);
-    // await signOutUser();
-    // setUser(null);
-    // setCurrentUser(null);
-  }
+  // const handleMenuClick = () => {
+    // setIsOpen((prev) => !prev);
+  // };
 
   return (
     <header className="bg-white flex flex-col justify-center fixed w-full z-50 shadow-md px-0">
@@ -33,11 +24,7 @@ const Navbar = ({ handleNavClose }) => {
       >
         {/*Logo*/}
         <div>
-          <Link
-            href="/"
-            title="Target Translation"
-            // onClick={handleNavClose}
-          >
+          <Link href="/" title="Target Translation">
             <Image
               width={180}
               height={100}
@@ -52,7 +39,7 @@ const Navbar = ({ handleNavClose }) => {
             id="nav_toggle"
             title="menu button"
             className="h-full w-full"
-            onClick={handleMenuClick}
+            // onClick={handleMenuClick}
           >
             {isOpen ? (
               <XMarkIcon className="w-10 h-10 text-orange-500" />
@@ -68,24 +55,20 @@ const Navbar = ({ handleNavClose }) => {
           } absolute top-16 right-0 w-full shadow-2xl lg:shadow-none lg:inset-0 lg:relative lg:block`}
         >
           <ul className="flex flex-col bg-white tracking-wider font-medium text-xs text-orange-500 pt-4 pb-10 lg:py-0 lg:flex-row lg:items-center lg:justify-end lg:pr-10">
-            <li className="px-3 py-2" onClick={handleMenuClick}>
+            <li className="px-3 py-2" >
               <Link href={"#"}>Traducciones</Link>
             </li>
-            <li className="px-3 py-2" onClick={handleMenuClick}>
+            <li className="px-3 py-2" >
               <Link href={"#"}>Interpretaciones</Link>
             </li>
-            <li className="px-3 py-2" onClick={handleMenuClick}>
+            <li className="px-3 py-2" >
               <Link href={"#"}>Traducciones Juradas</Link>
             </li>
-            <li className="px-3 py-2" onClick={handleMenuClick}>
+            <li className="px-3 py-2" >
               <Link href={"#contact"}>Contacto</Link>
             </li>
-            <li className="px-3 py-2" onClick={handleMenuClick}>
-              {currentUser ? (
-                <span onClick={handleSignOutUser} className="cursor-pointer">Sign out</span>
-              ) : (
-                <Link href={"/login"} >Login</Link>
-              )}
+            <li className="px-3 py-2" >
+                <AuthButton />
             </li>
           </ul>
         </div>

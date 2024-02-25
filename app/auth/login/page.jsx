@@ -1,47 +1,22 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
-
+import Link from "next/link";
+import { login } from "../../../utils/actions/actions";
 const initialValues = {
   email: "",
   password: "",
 };
 
 export default function Page() {
-  const router = useRouter();
-  const [form, setForm] = useState(initialValues);
-  const { email, password } = form;
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await signInAdmin(email, password);
-      setForm(initialValues);
-      router.push("/dashboard")
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center pb-10 bg-orange-100">
+    <div className="min-h-screen flex flex-col justify-center items-center pb-10 bg-orange-100 text-gray-500">
       <h1 className="pt-10 text-4xl text-center mb-10 font-semibold text-orange-500">
         Login
       </h1>
       <form
-        onSubmit={handleSubmit}
+        action={login}
         className="mx-auto flex flex-col gap-3 max-w-2xl py-10 px-5 bg-white shadow-2xl rounded-2xl"
       >
         <input
           type="email"
-          value={email}
-          onChange={handleChange}
           placeholder="Email"
           required
           name="email"
@@ -49,8 +24,6 @@ export default function Page() {
         />
         <input
           type="password"
-          value={password}
-          onChange={handleChange}
           placeholder="Password"
           required
           name="password"
@@ -65,7 +38,12 @@ export default function Page() {
           </button>
         </div>
       </form>
+      <p className="mt-4 text-orange-500">
+        don't have an account?{" "}
+        <Link href={"/auth/signup"} className="hover:underline">
+          Sign up
+        </Link>
+      </p>
     </div>
-    // authentication > update context/prop drill to give access to rescricted area
   );
-};
+}

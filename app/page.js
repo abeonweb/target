@@ -1,5 +1,5 @@
-import Form from "./components/Form";
-import Contact from "./components/Contact";
+import Form from "../components/Form";
+import Contact from "../components/Contact";
 
 export default function Home() {
   return (
@@ -11,8 +11,8 @@ export default function Home() {
           <h2 className="text-lg lg:text-2xl lg:px-10">Mas de 30 anos de experiencia y miles de clientes nos avala.</h2>
         </div>
         <Form />
-        </div>
-        <Contact />
+      </div>
+      <Contact />
     </main>
   );
 }
