@@ -1,18 +1,14 @@
 import Link from "next/link";
-import { login } from "../../../utils/actions/actions";
-const initialValues = {
-  email: "",
-  password: "",
-};
+import { loginUser } from "../../../utils/actions";
 
-export default function Page() {
+export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center pb-10 bg-orange-100 text-gray-500">
       <h1 className="pt-10 text-4xl text-center mb-10 font-semibold text-orange-500">
         Login
       </h1>
       <form
-        action={login}
+        action={loginUser}
         className="mx-auto flex flex-col gap-3 max-w-2xl py-10 px-5 bg-white shadow-2xl rounded-2xl"
       >
         <input
