@@ -1,16 +1,13 @@
 'use server'
-
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { createClient } from '../supabase/server'
+import { createClient } from './supabase/server'
 
 
 const supabase = createClient();
 
-export async function getClient() { return supabase }
-
-export async function login(formData) {
+export async function loginUser(formData) {
 
     //validate input
     const data = {
@@ -24,9 +21,6 @@ export async function login(formData) {
         redirect(`/error?message=${error.message}`)
     }
 
-    const { data: { user } } = await supabase.auth.getUser();
-    console.log('the user: ', user);
-
     revalidatePath('/', 'layout')
     redirect('/user')
 }
@@ -39,14 +33,14 @@ export async function signup(formData) {
         password: formData.get('password'),
     }
 
-    const { error } = await supabase.auth.signUp(data)
+    const { error } = await supabase.auth.signUp(data);
 
     if (error) {
-        redirect('/error')
+        redirect(`/error?message=${error.message}`);
     }
 
     const { data: { user } } = await supabase.auth.getUser();
-    console.log('the user: ', user);
+    console.log('sign up the user: ', user);
 
     revalidatePath('/', 'layout')
     redirect('/user')
@@ -59,7 +53,10 @@ export const signOutUser = async () => {
     redirect('/');
 };
 
-export async function getUser() {
-    const { data, error } = await supabase.auth.getUser();
-    return data.user
+export async function getUserData() {
+    const supabase = createClient();
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+    return user;
 }
