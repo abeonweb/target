@@ -40,7 +40,7 @@ export default function SignUpPage() {
       </form>
       <p className="mt-4 text-orange-500">
         already have an account?{" "}
-        <Link href={"/auth/login"} className="hover:underline">
+        <Link href={"/login"} className="hover:underline">
           Log in
         </Link>
         .
