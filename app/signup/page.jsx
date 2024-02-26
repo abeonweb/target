@@ -1,4 +1,4 @@
-import { signup } from "../../../utils/actions";
+import { signup } from "../../utils/actions";
 import Link from "next/link";
 
 export default function SignUpPage() {

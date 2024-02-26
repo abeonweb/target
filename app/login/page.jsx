@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loginUser } from "../../../utils/actions";
+import { loginUser } from "../../utils/actions";
 
 export default function LoginPage() {
   return (
