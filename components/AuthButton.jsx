@@ -16,7 +16,7 @@ export default async function AuthButton() {
     );
   } else {
     return (
-      <Link href={"/auth/login"} className=" text-orange-500">
+      <Link href={"/login"} className=" text-orange-500">
         Login
       </Link>
     );
